@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="JourneyItem" representedClassName="JourneyItem" syncable="YES" codeGenerationType="class">
+        <attribute name="car" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="destination" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="journeyStatus" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="returnTime" optional="YES" attributeType="String"/>
+        <attribute name="startTime" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <relationship name="logbook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LogbookItem" inverseName="associateJourney" inverseEntity="LogbookItem"/>
+    </entity>
+    <entity name="LogbookItem" representedClassName="LogbookItem" syncable="YES" codeGenerationType="class">
+        <attribute name="comments" optional="YES" attributeType="String"/>
+        <attribute name="departureTime" optional="YES" attributeType="String"/>
+        <attribute name="enginOil" optional="YES" attributeType="String"/>
+        <attribute name="fuel" optional="YES" attributeType="String"/>
+        <attribute name="journeyID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mBegin" optional="YES" attributeType="String"/>
+        <attribute name="mEnd" optional="YES" attributeType="String"/>
+        <attribute name="passengers" optional="YES" attributeType="String"/>
+        <attribute name="returnTime" optional="YES" attributeType="String"/>
+        <attribute name="route" optional="YES" attributeType="String"/>
+        <attribute name="updater" optional="YES" attributeType="String"/>
+        <relationship name="associateJourney" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JourneyItem" inverseName="logbook" inverseEntity="JourneyItem"/>
+    </entity>
+    <entity name="UserItem" representedClassName="UserItem" syncable="YES" codeGenerationType="class">
+        <attribute name="account" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="userStatus" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="JourneyItem" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="LogbookItem" positionX="246.93798828125" positionY="-7.87750244140625" width="128" height="209"/>
+        <element name="UserItem" positionX="28.78662109375" positionY="-169.2560272216797" width="128" height="74"/>
+    </elements>
+</model>

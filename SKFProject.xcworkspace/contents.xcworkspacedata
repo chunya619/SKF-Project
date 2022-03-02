@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:LogbookItem+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:LogbookItem+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:UserItem+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:UserItem+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:JourneyItem+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:JourneyItem+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:SKFProject.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

@@ -1,0 +1,6 @@
+framework module Pods_SKFProject_SKFProjectUITests {
+  umbrella header "Pods-SKFProject-SKFProjectUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

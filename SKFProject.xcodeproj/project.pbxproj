@@ -3,19 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2878C868593BD8B682C9F9C3 /* Pods_SKFProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E594D28514E5E9F9ED65F2B /* Pods_SKFProject.framework */; };
+		7401840426B25E3C0097919E /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7401840326B25E3C0097919E /* WeatherDataModel.swift */; };
+		7452319E2682D6A000F6FF47 /* JourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7452319D2682D6A000F6FF47 /* JourneyViewController.swift */; };
+		745231A02682DB8700F6FF47 /* JourneyTableViewCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7452319F2682DB8700F6FF47 /* JourneyTableViewCellViewController.swift */; };
+		74561A612709C2410024332F /* PreviousJourneyTableViewCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74561A602709C2410024332F /* PreviousJourneyTableViewCellViewController.swift */; };
+		74561A632709C4A00024332F /* PreviousJourneyViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74561A622709C4A00024332F /* PreviousJourneyViewControllerTableViewController.swift */; };
+		74561A652709D1930024332F /* PreviousLogbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74561A642709D1930024332F /* PreviousLogbookViewController.swift */; };
 		747A0F312675A5C50049ABA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747A0F302675A5C50049ABA1 /* AppDelegate.swift */; };
 		747A0F332675A5C50049ABA1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747A0F322675A5C50049ABA1 /* SceneDelegate.swift */; };
-		747A0F352675A5C50049ABA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747A0F342675A5C50049ABA1 /* ViewController.swift */; };
+		747A0F352675A5C50049ABA1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747A0F342675A5C50049ABA1 /* LoginViewController.swift */; };
 		747A0F382675A5C50049ABA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 747A0F362675A5C50049ABA1 /* Main.storyboard */; };
 		747A0F3B2675A5C50049ABA1 /* SKFProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 747A0F392675A5C50049ABA1 /* SKFProject.xcdatamodeld */; };
 		747A0F3D2675A5D50049ABA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 747A0F3C2675A5D50049ABA1 /* Assets.xcassets */; };
 		747A0F402675A5D50049ABA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 747A0F3E2675A5D50049ABA1 /* LaunchScreen.storyboard */; };
 		747A0F4B2675A5D60049ABA1 /* SKFProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747A0F4A2675A5D60049ABA1 /* SKFProjectTests.swift */; };
 		747A0F562675A5D60049ABA1 /* SKFProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747A0F552675A5D60049ABA1 /* SKFProjectUITests.swift */; };
+		748ABE9E26B39AE500C56BBC /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748ABE9D26B39AE500C56BBC /* ChangeCityViewController.swift */; };
+		74D3500926783D8B000CDFB7 /* LoadDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D3500826783D8B000CDFB7 /* LoadDataViewController.swift */; };
+		74D3500D26783E27000CDFB7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D3500C26783E27000CDFB7 /* UserModel.swift */; };
+		74D3500F26784BF5000CDFB7 /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D3500E26784BF5000CDFB7 /* JourneyModel.swift */; };
+		74F95C9126A5543B0043101D /* LogbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F95C9026A5543B0043101D /* LogbookViewController.swift */; };
+		86BAC3C7039C0EE983C7224C /* Pods_SKFProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91400A82BEE42308A9BD2781 /* Pods_SKFProjectTests.framework */; };
+		96BEAAC22CD95A58C002C98C /* Pods_SKFProject_SKFProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7DA1B46D70E191E04AEC12 /* Pods_SKFProject_SKFProjectUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +50,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28FBE748FA6F8331889934A4 /* Pods-SKFProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFProjectTests.release.xcconfig"; path = "Target Support Files/Pods-SKFProjectTests/Pods-SKFProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		3E594D28514E5E9F9ED65F2B /* Pods_SKFProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SKFProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F86E5983BC53642F6FD3134 /* Pods-SKFProject-SKFProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFProject-SKFProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-SKFProject-SKFProjectUITests/Pods-SKFProject-SKFProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7401840326B25E3C0097919E /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
+		7452319D2682D6A000F6FF47 /* JourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewController.swift; sourceTree = "<group>"; };
+		7452319F2682DB8700F6FF47 /* JourneyTableViewCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewCellViewController.swift; sourceTree = "<group>"; };
+		74561A602709C2410024332F /* PreviousJourneyTableViewCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousJourneyTableViewCellViewController.swift; sourceTree = "<group>"; };
+		74561A622709C4A00024332F /* PreviousJourneyViewControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousJourneyViewControllerTableViewController.swift; sourceTree = "<group>"; };
+		74561A642709D1930024332F /* PreviousLogbookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousLogbookViewController.swift; sourceTree = "<group>"; };
 		747A0F2D2675A5C50049ABA1 /* SKFProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKFProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		747A0F302675A5C50049ABA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		747A0F322675A5C50049ABA1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		747A0F342675A5C50049ABA1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		747A0F342675A5C50049ABA1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		747A0F372675A5C50049ABA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		747A0F3A2675A5C50049ABA1 /* SKFProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SKFProject.xcdatamodel; sourceTree = "<group>"; };
 		747A0F3C2675A5D50049ABA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +74,17 @@
 		747A0F512675A5D60049ABA1 /* SKFProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKFProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		747A0F552675A5D60049ABA1 /* SKFProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFProjectUITests.swift; sourceTree = "<group>"; };
 		747A0F572675A5D60049ABA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		748ABE9D26B39AE500C56BBC /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
+		74D3500826783D8B000CDFB7 /* LoadDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataViewController.swift; sourceTree = "<group>"; };
+		74D3500C26783E27000CDFB7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		74D3500E26784BF5000CDFB7 /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
+		74F95C9026A5543B0043101D /* LogbookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookViewController.swift; sourceTree = "<group>"; };
+		91400A82BEE42308A9BD2781 /* Pods_SKFProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SKFProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80B6B9AB2A035E2330A36E9 /* Pods-SKFProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-SKFProjectTests/Pods-SKFProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D8A58A982583A0D05DE21C48 /* Pods-SKFProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFProject.debug.xcconfig"; path = "Target Support Files/Pods-SKFProject/Pods-SKFProject.debug.xcconfig"; sourceTree = "<group>"; };
+		DC234B4693C40E5BB8390C42 /* Pods-SKFProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFProject.release.xcconfig"; path = "Target Support Files/Pods-SKFProject/Pods-SKFProject.release.xcconfig"; sourceTree = "<group>"; };
+		EB7DA1B46D70E191E04AEC12 /* Pods_SKFProject_SKFProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SKFProject_SKFProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F74718493069E6951E7581C8 /* Pods-SKFProject-SKFProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFProject-SKFProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-SKFProject-SKFProjectUITests/Pods-SKFProject-SKFProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2878C868593BD8B682C9F9C3 /* Pods_SKFProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86BAC3C7039C0EE983C7224C /* Pods_SKFProjectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +108,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96BEAAC22CD95A58C002C98C /* Pods_SKFProject_SKFProjectUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0591B6CC7D77A00E77A6BBBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E594D28514E5E9F9ED65F2B /* Pods_SKFProject.framework */,
+				EB7DA1B46D70E191E04AEC12 /* Pods_SKFProject_SKFProjectUITests.framework */,
+				91400A82BEE42308A9BD2781 /* Pods_SKFProjectTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5895E20CAB5A74B609000C5C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D8A58A982583A0D05DE21C48 /* Pods-SKFProject.debug.xcconfig */,
+				DC234B4693C40E5BB8390C42 /* Pods-SKFProject.release.xcconfig */,
+				5F86E5983BC53642F6FD3134 /* Pods-SKFProject-SKFProjectUITests.debug.xcconfig */,
+				F74718493069E6951E7581C8 /* Pods-SKFProject-SKFProjectUITests.release.xcconfig */,
+				B80B6B9AB2A035E2330A36E9 /* Pods-SKFProjectTests.debug.xcconfig */,
+				28FBE748FA6F8331889934A4 /* Pods-SKFProjectTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		747A0F242675A5C40049ABA1 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +145,8 @@
 				747A0F492675A5D60049ABA1 /* SKFProjectTests */,
 				747A0F542675A5D60049ABA1 /* SKFProjectUITests */,
 				747A0F2E2675A5C50049ABA1 /* Products */,
+				5895E20CAB5A74B609000C5C /* Pods */,
+				0591B6CC7D77A00E77A6BBBE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,12 +165,12 @@
 			children = (
 				747A0F302675A5C50049ABA1 /* AppDelegate.swift */,
 				747A0F322675A5C50049ABA1 /* SceneDelegate.swift */,
-				747A0F342675A5C50049ABA1 /* ViewController.swift */,
-				747A0F362675A5C50049ABA1 /* Main.storyboard */,
+				74D3500B26783DF0000CDFB7 /* Model */,
+				74D3500726783D25000CDFB7 /* Controller */,
+				74D3500A26783DA3000CDFB7 /* View */,
 				747A0F3C2675A5D50049ABA1 /* Assets.xcassets */,
 				747A0F3E2675A5D50049ABA1 /* LaunchScreen.storyboard */,
 				747A0F412675A5D50049ABA1 /* Info.plist */,
-				747A0F392675A5C50049ABA1 /* SKFProject.xcdatamodeld */,
 			);
 			path = SKFProject;
 			sourceTree = "<group>";
@@ -131,6 +193,41 @@
 			path = SKFProjectUITests;
 			sourceTree = "<group>";
 		};
+		74D3500726783D25000CDFB7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				747A0F342675A5C50049ABA1 /* LoginViewController.swift */,
+				74D3500826783D8B000CDFB7 /* LoadDataViewController.swift */,
+				7452319F2682DB8700F6FF47 /* JourneyTableViewCellViewController.swift */,
+				7452319D2682D6A000F6FF47 /* JourneyViewController.swift */,
+				74F95C9026A5543B0043101D /* LogbookViewController.swift */,
+				748ABE9D26B39AE500C56BBC /* ChangeCityViewController.swift */,
+				74561A622709C4A00024332F /* PreviousJourneyViewControllerTableViewController.swift */,
+				74561A602709C2410024332F /* PreviousJourneyTableViewCellViewController.swift */,
+				74561A642709D1930024332F /* PreviousLogbookViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		74D3500A26783DA3000CDFB7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				747A0F362675A5C50049ABA1 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		74D3500B26783DF0000CDFB7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				747A0F392675A5C50049ABA1 /* SKFProject.xcdatamodeld */,
+				74D3500C26783E27000CDFB7 /* UserModel.swift */,
+				74D3500E26784BF5000CDFB7 /* JourneyModel.swift */,
+				7401840326B25E3C0097919E /* WeatherDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,9 +235,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 747A0F5A2675A5D60049ABA1 /* Build configuration list for PBXNativeTarget "SKFProject" */;
 			buildPhases = (
+				2C799FA3CA18859B8BF49AB8 /* [CP] Check Pods Manifest.lock */,
 				747A0F292675A5C50049ABA1 /* Sources */,
 				747A0F2A2675A5C50049ABA1 /* Frameworks */,
 				747A0F2B2675A5C50049ABA1 /* Resources */,
+				BB543902F08B600DA984F2FA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,6 +254,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 747A0F5D2675A5D60049ABA1 /* Build configuration list for PBXNativeTarget "SKFProjectTests" */;
 			buildPhases = (
+				66D6A3B50238074509F57C31 /* [CP] Check Pods Manifest.lock */,
 				747A0F422675A5D60049ABA1 /* Sources */,
 				747A0F432675A5D60049ABA1 /* Frameworks */,
 				747A0F442675A5D60049ABA1 /* Resources */,
@@ -173,9 +273,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 747A0F602675A5D60049ABA1 /* Build configuration list for PBXNativeTarget "SKFProjectUITests" */;
 			buildPhases = (
+				B9D6EC5BF33E09173DF08959 /* [CP] Check Pods Manifest.lock */,
 				747A0F4D2675A5D60049ABA1 /* Sources */,
 				747A0F4E2675A5D60049ABA1 /* Frameworks */,
 				747A0F4F2675A5D60049ABA1 /* Resources */,
+				4C23D1294C5EE5622D77C79C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,15 +358,129 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2C799FA3CA18859B8BF49AB8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SKFProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C23D1294C5EE5622D77C79C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SKFProject-SKFProjectUITests/Pods-SKFProject-SKFProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SKFProject-SKFProjectUITests/Pods-SKFProject-SKFProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SKFProject-SKFProjectUITests/Pods-SKFProject-SKFProjectUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66D6A3B50238074509F57C31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SKFProjectTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9D6EC5BF33E09173DF08959 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SKFProject-SKFProjectUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB543902F08B600DA984F2FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SKFProject/Pods-SKFProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SKFProject/Pods-SKFProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SKFProject/Pods-SKFProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		747A0F292675A5C50049ABA1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				747A0F352675A5C50049ABA1 /* ViewController.swift in Sources */,
+				747A0F352675A5C50049ABA1 /* LoginViewController.swift in Sources */,
+				7452319E2682D6A000F6FF47 /* JourneyViewController.swift in Sources */,
+				74D3500D26783E27000CDFB7 /* UserModel.swift in Sources */,
+				748ABE9E26B39AE500C56BBC /* ChangeCityViewController.swift in Sources */,
+				745231A02682DB8700F6FF47 /* JourneyTableViewCellViewController.swift in Sources */,
+				74F95C9126A5543B0043101D /* LogbookViewController.swift in Sources */,
 				747A0F312675A5C50049ABA1 /* AppDelegate.swift in Sources */,
 				747A0F3B2675A5C50049ABA1 /* SKFProject.xcdatamodeld in Sources */,
+				7401840426B25E3C0097919E /* WeatherDataModel.swift in Sources */,
+				74561A612709C2410024332F /* PreviousJourneyTableViewCellViewController.swift in Sources */,
+				74D3500926783D8B000CDFB7 /* LoadDataViewController.swift in Sources */,
 				747A0F332675A5C50049ABA1 /* SceneDelegate.swift in Sources */,
+				74D3500F26784BF5000CDFB7 /* JourneyModel.swift in Sources */,
+				74561A632709C4A00024332F /* PreviousJourneyViewControllerTableViewController.swift in Sources */,
+				74561A652709D1930024332F /* PreviousLogbookViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,12 +653,14 @@
 		};
 		747A0F5B2675A5D60049ABA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8A58A982583A0D05DE21C48 /* Pods-SKFProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L32ST3V47T;
 				INFOPLIST_FILE = SKFProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -456,12 +674,14 @@
 		};
 		747A0F5C2675A5D60049ABA1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC234B4693C40E5BB8390C42 /* Pods-SKFProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L32ST3V47T;
 				INFOPLIST_FILE = SKFProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,6 +695,7 @@
 		};
 		747A0F5E2675A5D60049ABA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B80B6B9AB2A035E2330A36E9 /* Pods-SKFProjectTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -497,6 +718,7 @@
 		};
 		747A0F5F2675A5D60049ABA1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28FBE748FA6F8331889934A4 /* Pods-SKFProjectTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -519,6 +741,7 @@
 		};
 		747A0F612675A5D60049ABA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F86E5983BC53642F6FD3134 /* Pods-SKFProject-SKFProjectUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -539,6 +762,7 @@
 		};
 		747A0F622675A5D60049ABA1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F74718493069E6951E7581C8 /* Pods-SKFProject-SKFProjectUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
