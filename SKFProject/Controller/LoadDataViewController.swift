@@ -37,7 +37,7 @@ class LoadDataViewController: UIViewController {
                 if let journeyJSON = response.data {
                     let decoder = JSONDecoder()
                     let journeys = try decoder.decode([JourneyModel].self, from: journeyJSON)
-                    print(journeys)
+                    print("journeys in JSON format:", journeys)
                     print(type(of: journeys))
                     
                     self.saveJourneys(journeys: journeys)
@@ -68,9 +68,11 @@ class LoadDataViewController: UIViewController {
                             newjourney.startTime = journey.START
                             newjourney.returnTime = journey.RETURN
                             newjourney.destination = journey.DESTINATION
+                            newjourney.address = journey.ADDRESS
                             newjourney.car = journey.CAR
+                            newjourney.status = String(journey.STATUS)
                             listOfJourney.append(newjourney)
-                            print(listOfJourney)
+                            print("listOfJourney :", listOfJourney)
                         }
                         print("Inserting journeys success.")
                         
@@ -83,14 +85,11 @@ class LoadDataViewController: UIViewController {
             } catch {
                 print("Error saving journeys \(error)")
             }
+        
         self.saveToSQLite()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            self.performSegue(withIdentifier: "goToJourney", sender: self)
-            let sb : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(identifier: "navigationController")
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+            self.performSegue(withIdentifier: "goToJourney", sender: self)
         }
     }
    
@@ -102,7 +101,7 @@ class LoadDataViewController: UIViewController {
         do{
             try context.save()
             
-            print("success")
+            print("save to SQLite success.")
             
         } catch (let error) {
             print("Erroring saving context\(error)")

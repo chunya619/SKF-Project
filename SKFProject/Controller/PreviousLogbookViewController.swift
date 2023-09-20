@@ -16,7 +16,6 @@ class PreviousLogbookViewController: UITableViewController {
     var selectedJourney : JourneyItem?
     
     
-    
     @IBOutlet weak var departureInfoLabel: UILabel!
     @IBOutlet weak var departureDetailLabel: UILabel!
     
@@ -120,12 +119,13 @@ class PreviousLogbookViewController: UITableViewController {
         
         // only the completed journey will be displayed.
         let statusPredicate = NSPredicate(format: "owner.status == %i", 0)
-        let idPredicate = NSPredicate(format: "owner.id == %@", selectedJourney!.id)
+        let idPredicate = NSPredicate(format: "owner.id == %ld", selectedJourney!.id)
         let compound = NSCompoundPredicate(andPredicateWithSubpredicates: [statusPredicate, idPredicate])
         request.predicate = compound
         
         do {
             let itemArray = try context.fetch(request)
+            print(itemArray)
             
             if itemArray.count != 0 {
                 for item in itemArray {

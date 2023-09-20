@@ -18,11 +18,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    let USER_URL = "https://3651-180-177-1-143.ngrok.io/users"
+    let USER_URL = "https://3f7b-123-193-248-240.ngrok.io/users"
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //keyboard controlling
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
         self.view.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         loginLabel.textColor = UIColor(red: 139/255, green: 71/255, blue: 38/255, alpha: 1)
@@ -31,6 +35,12 @@ class LoginViewController: UIViewController {
         loginButton.setTitleColor(UIColor(red: 255/255, green: 250/255, blue: 240/255, alpha: 1), for: .normal)
         loginButton.backgroundColor = UIColor(red: 139/255, green: 115/255, blue: 85/255, alpha: 1)
       
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     
@@ -65,13 +75,13 @@ class LoginViewController: UIViewController {
                         if let controller = self.storyboard?.instantiateViewController(identifier: "LoadDataViewController") as? LoadDataViewController {
                             
                             controller.modalPresentationStyle = .fullScreen
-                            controller.JOURENY_URL = "https://3651-180-177-1-143.ngrok.io/journeys/\(self.accountTextField.text!)"
+                            controller.JOURENY_URL = "https://3f7b-123-193-248-240.ngrok.io/journeys/\(self.accountTextField.text!)"
                             
                             self.present(controller, animated: true, completion: nil)
                         }
                         SVProgressHUD.dismiss()
                             
-                    case 400:
+                    case 401:
                         print("Bad Request")
                         
                         if let message = response.data {

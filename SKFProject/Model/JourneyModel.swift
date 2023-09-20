@@ -13,6 +13,7 @@ struct JourneyModel: Codable {
     var START: String
     var RETURN: String
     var DESTINATION: String
+    var ADDRESS: String
     var CAR: Int32
     var STATUS: Int32
     
@@ -21,6 +22,7 @@ struct JourneyModel: Codable {
         case START
         case RETURN
         case DESTINATION
+        case ADDRESS
         case CAR
         case STATUS
     }

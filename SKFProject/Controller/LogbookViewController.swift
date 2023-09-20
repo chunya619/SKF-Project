@@ -14,16 +14,16 @@ import SVProgressHUD
 import MapKit
 import SystemConfiguration.CaptiveNetwork
 
-class LogbookViewController: UITableViewController, CLLocationManagerDelegate, ChangeCityDelegate {
+class LogbookViewController: UITableViewController, CLLocationManagerDelegate, UITextFieldDelegate, ChangeCityDelegate {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //Logbook URL
-    let Logbook_URL = "https://3651-180-177-1-143.ngrok.io/logbooks"
+    let Logbook_URL = "https://3f7b-123-193-248-240.ngrok.io/logbooks"
     
     //user name for "updater" column
     var updater = ""
-    
+
     //Constants
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
     let APP_ID = "ae314b4b14d4deefe087feccd5cad922"
@@ -42,6 +42,8 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("entring logbook.")
         
         // keyboard controlling
         self.hideKeyboardWhenTappedAround()
@@ -167,6 +169,7 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
         
         //comments
         commentInfoTextView.textColor = UIColor(red: 205/255, green: 155/255, blue: 29/255, alpha: 1)
+        commentInfoTextView.backgroundColor = .clear
     }
     
 //MARK: - Label and textField
@@ -180,6 +183,7 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
     var titleDepartureDateString: String?
     var titleReturnDateString: String?
     var titleDestinationString: String?
+    var destinationAddress: String!
     @IBOutlet weak var titleDepartureDate: UILabel!
     @IBOutlet weak var titleDepartureDateInfo: UILabel!
     @IBOutlet weak var titleReturnDate: UILabel!
@@ -250,7 +254,7 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
     // logbook info always appears on the screen when user tap into each journey.
     func loadLogbookInfo(with request: NSFetchRequest<LogbookItem> = LogbookItem.fetchRequest()) {
         
-        let predicate = NSPredicate(format: "owner.id == %@", selectedJourney!.id)
+        let predicate = NSPredicate(format: "owner.id = %ld", selectedJourney!.id)
         request.predicate = predicate
         
         do {
@@ -408,38 +412,41 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
     
 //MARK: - GoogleMaps
     
-    var Latitude: CLLocationDegrees = 0.0
-    var Longitude: CLLocationDegrees = 0.0
+    @IBAction func googleMapButtonPressed(_ sender: Any) {
+        print("google map button pressed.")
+        convertAddress()
+    }
     
     func convertAddress() {
+        print("entring geocoder")
+         
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(titleDestinationString!, completionHandler: {(placemarks, error) -> Void in
+        geocoder.geocodeAddressString(destinationAddress, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
-                print("Error\(String(describing: error))")
+                print("reverse deocode fail:\(String(describing: error))")
             }
             if let placemark = placemarks?.first {
                 let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
-                self.desCoordinate(startAddrLat: coordinates.latitude, startAddrLon: coordinates.longitude)
+                print("convert address success.", coordinates.latitude, coordinates.longitude)
+                
+                self.destinationLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
             }
         })
     }
     
-    func desCoordinate(startAddrLat: CLLocationDegrees, startAddrLon: CLLocationDegrees){
-        Latitude = startAddrLat
-        Longitude = startAddrLon
-    }
-    
-    @IBAction func googleMapButtonPressed(_ sender: Any) {
-        convertAddress()
+    func destinationLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        
+        let url = URL(string: "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)&directionsmode=driving")
         
         DispatchQueue.main.async {
             SVProgressHUD.show()
         }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             SVProgressHUD.dismiss()
-            if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
-              UIApplication.shared.open(URL(string:
-                "comgooglemaps://?saddr=Pachergasse+10+4400+Steyr+Austria&daddr=Johannes+Kepler+University+Linz&directionsmode=driving")!)
+            
+            if UIApplication.shared.canOpenURL(url!) {
+                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
             } else {
                 let appStoreGoogleMapURL = URL(string: "itms-apps://itunes.apple.com/app/id585027354")!
                 UIApplication.shared.open(appStoreGoogleMapURL, options: [:], completionHandler: nil)
@@ -460,52 +467,10 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
 
     @IBAction func doneButton(_ sender: Any) {
         
-    let request: NSFetchRequest<LogbookItem> = LogbookItem.fetchRequest()
-        
-        let predicate = NSPredicate(format: "owner.id == %@", selectedJourney!.id)
-        request.predicate = predicate
-        
-        do {
-            let results = try self.context.fetch(request)
-            
-            if results.count == 0 {
-                let newLogbook = LogbookItem(context: context)
-                newLogbook.departureTime = departureInfoTextField.text!
-                newLogbook.returnTime = returnInfoTextField.text!
-                newLogbook.mBegin = mBeginInfoTextField.text!
-                newLogbook.mEnd = mEndInfoTextField.text!
-                newLogbook.route = routeInfoTextField.text!
-                newLogbook.passengers = passengerInfoTextField.text!
-                newLogbook.fuel = fuelInfoTextField.text!
-                newLogbook.enginOil = engineOilInfoTextField.text!
-                newLogbook.comments = commentInfoTextView.text!
-                newLogbook.journeyID = selectedJourney!.id
-                
-                newLogbook.associateJourney = selectedJourney
-                
-                print("no this record in SQLite.")
-                
-            } else {
-                results[0].setValue(departureInfoTextField.text!, forKey: "departureTime")
-                results[0].setValue(returnInfoTextField.text!, forKey: "returnTime")
-                results[0].setValue(mBeginInfoTextField.text!, forKey: "mBegin")
-                results[0].setValue(mEndInfoTextField.text!, forKey: "mEnd")
-                results[0].setValue(routeInfoTextField.text!, forKey: "route")
-                results[0].setValue(passengerInfoTextField.text!, forKey: "passengers")
-                results[0].setValue(fuelInfoTextField.text!, forKey: "fuel")
-                results[0].setValue(engineOilInfoTextField.text!, forKey: "enginOil")
-                results[0].setValue(commentInfoTextView.text!, forKey: "comments")
-                
-                print("record updated!")
-            }
-            
-        } catch {
-            print("Error saving the data \(error)")
-        }
-        self.saveLogbooks()
-        
-        print("Saving to SQLite successfully!")
-        navigationController?.popViewController(animated: true)
+    logbookSaveToSQLite()
+
+    print("Saving to SQLite successfully!")
+    navigationController?.popViewController(animated: true)
     }
 
 // MARK: - Model Manupulation Methods
@@ -518,23 +483,7 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
         }
     }
     
-//MARK: - Detecting Available wifi
-    
-    func currentSSID() -> String? {
-        var ssid: String?
-        if let interfaces = CNCopySupportedInterfaces() as NSArray? {
-        for interface in interfaces {
-        if let interfaceInfo = CNCopyCurrentNetworkInfo(interface as! CFString) as NSDictionary? {
-                    ssid = interfaceInfo[kCNNetworkInfoKeySSID as String] as? String
-            print(ssid as Any)
-                    break
-                }
-            }
-        }
-        return ssid
-    }
-    
-//MARK: - Upload Logbook Function
+//MARK: - Upload Logbook and Connect to Server
     
     func uploadLogbook(url: String, parameters : [String : String]){
         AF.request(url, method: .post, parameters: parameters, encoder: JSONParameterEncoder.default)
@@ -559,13 +508,13 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
                             
                             let request: NSFetchRequest<JourneyItem> = JourneyItem.fetchRequest()
                             
-                            let predicate = NSPredicate(format: "id == %@", self.selectedJourney!.id)
+                            let predicate = NSPredicate(format: "id == %i", self.selectedJourney!.id)
                             request.predicate = predicate
                             
                             do {
                                 let results = try self.context.fetch(request)
                                 if results.count != 0 {
-                                    results[0].setValue(0, forKey: "status")
+                                    results[0].setValue("0", forKey: "status")
                                     print("status updating")
                                 }
                             } catch {
@@ -573,8 +522,26 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
                             }
                             self.saveLogbooks()
                         }
+                        
+                    case 404:
+                        print("No journey matches")
+                        
+                        SVProgressHUD.dismiss()
+                        
+                        if let message = response.data {
+                            let messageJSON = String(data: message, encoding: String.Encoding.utf8)
+                            print("Failure Response: \(String(describing: messageJSON))")
+                        }
+                        
+                        let alert = UIAlertController(title: "Upload Failed", message: "no journey matches.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        
+                        
                     default:
                         print("Upload Failed.")
+                        
+                        SVProgressHUD.dismiss()
                         
                         let alert = UIAlertController(title: "Upload Failed", message: "the web server is not connected yet.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -583,11 +550,60 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
                 }
             }
     }
+
+//MARK: - Upload logbook and save to SQLite
+    
+    func logbookSaveToSQLite() {
+        
+        let request: NSFetchRequest<LogbookItem> = LogbookItem.fetchRequest()
+            
+            let predicate = NSPredicate(format: "owner.id == %ld", selectedJourney!.id)
+            request.predicate = predicate
+            
+            do {
+                let results = try self.context.fetch(request)
+                
+                if results.count == 0 {
+                    let newLogbook = LogbookItem(context: context)
+                    newLogbook.departureTime = departureInfoTextField.text!
+                    newLogbook.returnTime = returnInfoTextField.text!
+                    newLogbook.mBegin = mBeginInfoTextField.text!
+                    newLogbook.mEnd = mEndInfoTextField.text!
+                    newLogbook.route = routeInfoTextField.text!
+                    newLogbook.passengers = passengerInfoTextField.text!
+                    newLogbook.fuel = fuelInfoTextField.text!
+                    newLogbook.enginOil = engineOilInfoTextField.text!
+                    newLogbook.comments = commentInfoTextView.text!
+                    newLogbook.journeyID = selectedJourney!.id
+                    
+                    newLogbook.owner = selectedJourney
+                    
+                    print("no this record in SQLite.")
+                    
+                } else {
+                    results[0].setValue(departureInfoTextField.text!, forKey: "departureTime")
+                    results[0].setValue(returnInfoTextField.text!, forKey: "returnTime")
+                    results[0].setValue(mBeginInfoTextField.text!, forKey: "mBegin")
+                    results[0].setValue(mEndInfoTextField.text!, forKey: "mEnd")
+                    results[0].setValue(routeInfoTextField.text!, forKey: "route")
+                    results[0].setValue(passengerInfoTextField.text!, forKey: "passengers")
+                    results[0].setValue(fuelInfoTextField.text!, forKey: "fuel")
+                    results[0].setValue(engineOilInfoTextField.text!, forKey: "enginOil")
+                    results[0].setValue(commentInfoTextView.text!, forKey: "comments")
+                    
+                    print("record updated!")
+                }
+                
+            } catch {
+                print("Error saving the data \(error)")
+            }
+            self.saveLogbooks()
+    }
                 
 //MARK: - Upload Button
-
+   
     @IBAction func uploadButtonPressed(_ sender: Any) {
-        
+
         let firstAlert = UIAlertController(title: "Please make sure all logbook content was saved.", message: "press the Done button to save your logbook.", preferredStyle: .alert)
         firstAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             let alert = UIAlertController(title: "Are your sure you want to upload your logbook?", message: nil, preferredStyle: .actionSheet)
@@ -596,16 +612,7 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
             alert.addAction(UIAlertAction(title: "Upload", style: .default, handler: { action in
                 
                 SVProgressHUD.show(withStatus: "uploading")
-                SVProgressHUD.setForegroundColor(UIColor(red: 255/255, green: 193/255, blue: 37/255, alpha: 1))
                
-                if (self.currentSSID() != "淳") {
-                    
-                    let connectAlert = UIAlertController(title: "Please connect to the company's intranet to complete the upload", message: "", preferredStyle: .alert)
-                    connectAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    print("7777777777")
-                   
-                } else {
-                    print("88888888888")
                     let journeyID = String(self.selectedJourney!.id)
                     let departureTime = self.departureInfoTextField.text!
                     let returnTime = self.returnInfoTextField.text!
@@ -617,61 +624,79 @@ class LogbookViewController: UITableViewController, CLLocationManagerDelegate, C
                     let engineOil = self.engineOilInfoTextField.text!
                     let remark = self.commentInfoTextView.text!
                     let updater = self.updater
+                    
                     let params : [String : String] = ["JOURNEYID" : journeyID, "DEPARTURE" : departureTime, "RETURN" : returnTime, "MBEGIN" : mBegin, "MEND" : mEnd, "ROUTE" : route, "PASSENGERS" : passengers, "FUEL" : fuel, "ENGINEOIL" : engineOil, "REMARK" : remark, "UPDATER" : updater]
 
                     self.uploadLogbook(url: self.Logbook_URL, parameters: params)
-                }
+                
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.logbookSaveToSQLite()
+                    }
             }))
             self.present(alert, animated: true)
         }))
         self.present(firstAlert, animated: true)
     }
-}
-
-// MARK: - Monitoring Logbook Info Did Change
-
-extension LogbookViewController: UITextFieldDelegate {
-
+    
+//MARK: - Monitoring Logbook Info Did Change
+    
     //Monitering if textField change or not
-    @IBAction func departureDidChange(_ sender: UITextField) {
-    NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
+    @IBAction func departureDidChange(_ sender: Any) {
+        print(departureInfoTextField.text!)
+        
+        NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
         print("departure time did changed.")
     }
     
-    @IBAction func returnDidChange(_ sender: UITextField) {
-    NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
+    @IBAction func returnDidChange(_ sender: Any) {
+        print(returnInfoTextField.text!)
+        
+        NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
         print("return time did changed.")
     }
     
-    @IBAction func mBeginDidChange(_ sender: UITextField) {
+    @IBAction func mBeginDidChange(_ sender: Any) {
+        print(mBeginInfoTextField.text!)
+        
         NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
         print("begin of mileage did changed.")
     }
     
-    @IBAction func mEndDidChange(_ sender: UITextField) {
+    @IBAction func mEndDidChnage(_ sender: Any) {
+        print(mEndInfoTextField.text!)
+        
         NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
         print("end of mileage did changed.")
     }
-
-    @IBAction func routeDidChange(_ sender: UITextField) {
-    NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
+    
+    @IBAction func routeDidChange(_ sender: Any) {
+        print(routeInfoTextField.text!)
+        
+        NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
         print("route did changed.")
     }
     
-    @IBAction func passengerDidChange(_ sender: UITextField) {
-    NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
+    @IBAction func passengerDidChnage(_ sender: Any) {
+        print(passengerInfoTextField.text!)
+        
+        NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
         print("passenger did changed.")
     }
     
-    @IBAction func fuelDidChange(_ sender: UITextField) {
-    NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
+    @IBAction func fuelDidChange(_ sender: Any) {
+        print(fuelInfoTextField.text!)
+        
+        NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
         print("fuel did changed.")
     }
     
-    @IBAction func engineOilDidChange(_ sender: UITextField) {
-    NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
+    @IBAction func engineOilDidChange(_ sender: Any) {
+        print(engineOilInfoTextField.text!)
+        
+        NotificationCenter.default.post(name: Notification.Name("logbookDidChange"), object: nil)
         print("engine oil did changed.")
     }
+    
 }
 
 extension LogbookViewController : UITextViewDelegate {

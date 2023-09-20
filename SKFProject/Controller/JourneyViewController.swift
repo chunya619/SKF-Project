@@ -84,6 +84,7 @@ class JourneyViewController: UITableViewController {
         
         do {
             itemArray = try context.fetch(request)
+            print("itemArray:", itemArray)
         } catch {
             print("Error fetching data from context \(error)")
         }
@@ -93,6 +94,7 @@ class JourneyViewController: UITableViewController {
 //MARK: - TableView Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(itemArray)
         return itemArray.count
     }
     
@@ -175,6 +177,7 @@ class JourneyViewController: UITableViewController {
             logbookVC.titleDepartureDateString = item.startTime
             logbookVC.titleReturnDateString = item.returnTime
             logbookVC.titleDestinationString = item.destination
+            logbookVC.destinationAddress = item.address
             logbookVC.updater = updater
             
             // passing journey's indexPath to logbook and logbook know which journey was triggered by user.

@@ -2,7 +2,7 @@
 //  JourneyItem+CoreDataProperties.swift
 //  
 //
-//  Created by 胡淨淳 on 2022/2/7.
+//  Created by 胡淨淳 on 2022/3/17.
 //
 //
 
@@ -23,6 +23,7 @@ extension JourneyItem {
     @NSManaged public var returnTime: String?
     @NSManaged public var startTime: String?
     @NSManaged public var status: String?
+    @NSManaged public var address: String?
     @NSManaged public var logbook: LogbookItem?
 
 }
